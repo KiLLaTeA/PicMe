@@ -1,58 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
     <link rel="stylesheet" href="/css/except.css">
     <title>Pic me, Django!</title>
 </head>
 <body>
-        <div class="menu">
-            <div class="menu-content">
-                <ul class="nav">
-                    <li><a class="logotype" href="index.html">PicMe, Django!</a></li>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="gallery.html">Галерея изображений</a></li>
-                </ul>
-                <a href="#">Авторизация</a>
-            </div>
-        </div>
-    
+        {% include 'menu.html' %}
         <div class="exception">
             <div class="exception-form">
                 <div class="small-form">
-                    <h1>404</h1>
+                    <h1>{{codeNumber}}</h1>
                     <hr>
-                    <p>Ошибка</p>
+                    <p>{{errorText}}</p>
                 </div>
-                <p class="desc">Данная страница не была найдена.</p>
+                <p class="desc">{{descText}}</p>
             </div>
         </div>
-    
-        <div class="footer">
-            <div class="footer-content">
-                <ul class="foot">
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="gallery.html">Галерея</a></li>
-                    <li><a href="#">Авторизация</a></li>
-                </ul>
-                <a class="logotype" href="index.html">PicMe, Django!</a>
-                <p>
-                    Костин М.М. <br>
-                    ИСТ-201 <br>
-                    ©2023-2024 <br>
-                </p>
-            </div>
-        </div>
-
-    <script>
-        function showFileName(input) {
-            if (input.files && input.files[0]) {
-                var fileName = input.files[0].name;
-                document.getElementById('file-name').innerText = "Выбран файл: " + fileName;
-            }
-        }
-    </script>
-    
-</body>
-</html>
+        {% include 'footer.html' %}
+{% endblock %}

@@ -33,5 +33,8 @@ handler403 = pageForbidden
 handler404 = pageNotFound
 handler500 = pageServerError
 
+admin.site.site_header = "Pic me, Django!"
+admin.site.index_title = "Страница администратора сервиса Pic me, Django."
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
