@@ -33,5 +33,5 @@ handler403 = pageForbidden
 handler404 = pageNotFound
 handler500 = pageServerError
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
