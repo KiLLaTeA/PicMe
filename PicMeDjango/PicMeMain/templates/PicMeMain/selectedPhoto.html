@@ -17,33 +17,34 @@
                     </div>
                 </div>
                 <div class="photo-text">
-                    <form class="form-sender" method="post" enctype="multipart/form-data">
+                    <form class="form-sender" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <p>Изменение параметров фото</p>
                         <div class="inputs-sizes">
-                            <input type="number" placeholder="Ширина" name="height">
-                            <input type="number" placeholder="Высота" name="width">
-                            <input type="number" placeholder="Поворот" name="rotation">
+                            <input type="number" placeholder="Ширина" name="height" value="10">
+                            <input type="number" placeholder="Высота" name="width" value="10">
+                            <input type="number" placeholder="Поворот" name="rotation" value="10">
                         </div>
                         <p>Наложение эффектов</p>
                         <div class="container">
                             <label>
-                                <input type="radio" name="radio" checked="" name="One">
+                                <input type="radio" name="radio" checked="" value="One">
                                 <span>Размытие</span>
                             </label>
                             <label>
-                                <input type="radio" name="radio" name="Two">
+                                <input type="radio" name="radio" value="Two">
                                 <span>Чёрно-белый</span>
                             </label>
                             <label>
-                                <input type="radio" name="radio" name="Three">
+                                <input type="radio" name="radio" value="Three">
                                 <span>Трафарет</span>
                             </label>
                             <label>
-                                <input type="radio" name="radio" name="Four">
+                                <input type="radio" name="radio" value="Four">
                                 <span>Сглаживание</span>
                             </label>
                             <label>
-                                <input type="radio" name="radio" name="Five">
+                                <input type="radio" name="radio" value="Five">
                                 <span>Детализация</span>
                             </label>
                         </div>

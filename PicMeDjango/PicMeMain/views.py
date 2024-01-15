@@ -6,7 +6,7 @@ from django.http import HttpResponse, \
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Photo
-from PIL import Image
+from PIL import Image, ImageFilter
 
 logo = [
     {'logo': 'mainPage'}
@@ -20,15 +20,6 @@ footer = [
     {'footerTitle': 'Главная', 'footerUrl': 'mainPage'},
     {'footerTitle': 'Галерея', 'footerUrl': 'galleryPage'},
 ]
-
-
-# def index(request):
-#     data = {
-#         'menu': menu,
-#         'footer': footer,
-#         'logo': logo,
-#     }
-#     return render(request, 'PicMeMain/index.html', context=data)
 
 
 def gallery(request):
@@ -82,12 +73,40 @@ def download_photo(request, photo_id):
 
 
 def convertPage(request, convert_id):
-    photo = Photo.objects.all()
+    # photo = Photo.objects.all()
+    photo = Photo.objects.get(id=convert_id)
     data = {
         'menu': menu,
         'footer': footer,
         'logo': logo,
+        'url_image': photo.image.url,
+        'name_image': photo.image.name[6:],
     }
+    if request.method == 'POST':
+        dat_ass = request.POST
+        height = dat_ass.get('height')
+        width = dat_ass.get('width')
+        rotation = dat_ass.get('rotation')
+        check_box = dat_ass.get('radio')
+
+        imge = Image.open(photo.image)
+
+        imge.thumbnail((int(height),int(width)))
+
+        if check_box == "One":
+            convert_img = imge.filter(ImageFilter.BLUR)
+        if check_box == "Two":
+            convert_img = imge.convert('L')
+        if check_box == "Three":
+            convert_img = imge.filter(ImageFilter.CONTOUR)
+        if check_box == "Four":
+            convert_img = imge.filter(ImageFilter.SMOOTH)
+        if check_box == "Five":
+            convert_img = imge.filter(ImageFilter.DETAIL)
+        full_path = 'media/'+photo.image.name
+
+        imge.save(full_path)
+        convert_img.save(full_path)
     return render(request, 'PicMeMain/selectedPhoto.html', context=data)
 
 
