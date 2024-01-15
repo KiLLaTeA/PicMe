@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'PicMeMain/css/styles.css' %}">
+    <title>Pic me, Django!</title>
+</head>
+<body>
+        {% include 'menu.html' %}
+        <div class="container-up">
+            <div class="upload-form">
+                <form class="form-img" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="label-text">Загрузить изображение</p>
+                    <label for="file" class="custom-file-input">Выбрать файл</label>
+                    <input class="hide" type="file" name="photo" id="file" onchange="showFileName(this)">
+                    <div id="file-name">{{ information }}</div>
+                    <button class="upload-but" type="submit">Загрузить</button>
+                </form>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+{% endblock %}

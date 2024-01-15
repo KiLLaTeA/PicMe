@@ -1,0 +1,18 @@
+        <div class="footer">
+            <div class="footer-content">
+                <ul class="foot">
+                    {% for f in footer %}
+                    <li><a href="{% url f.footerUrl %}">{{ f.footerTitle }}</a></li>
+                    {% endfor %}
+                    <li><a href="/admin/">Авторизация</a></li>
+                </ul>
+                {% for l in logo %}
+                <a class="logotype" href="{% url l.logo %}">PicMe, Django!</a>
+                {% endfor %}
+                <p>
+                    Костин М.М. <br>
+                    ИСТ-201 <br>
+                    ©2023-2024 <br>
+                </p>
+            </div>
+        </div>

@@ -1,0 +1,13 @@
+        <div class="menu">
+            <div class="menu-content">
+                <ul class="nav">
+                    {% for l in logo %}
+                    <li><a class="logotype" href="{% url l.logo %}">PicMe, Django!</a></li>
+                    {% endfor %}
+                    {% for m in menu %}
+                    <li><a href="{% url m.menuUrl %}">{{ m.menuTitle }}</a></li>
+                    {% endfor %}
+                </ul>
+                <a href="/admin/">Авторизация</a>
+            </div>
+        </div>

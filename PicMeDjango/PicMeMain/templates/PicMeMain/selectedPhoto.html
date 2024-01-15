@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'PicMeMain/css/selectedPhoto.css' %}">
+<title>Pic me, Django!</title>
+</head>
+<body>
+    {% include 'menu.html' %}
+        <div class="selectPhoto">
+            <div class="selectPhoto-form">
+                <div class="card">
+                    <img src="{{ url_image }}" alt="">
+                    <div class="card-text">
+                        <p>{{ name_image }}</p>
+                    </div>
+                </div>
+                <div class="photo-text">
+                    <form class="form-sender" method="post" enctype="multipart/form-data">
+                        <p>Изменение параметров фото</p>
+                        <div class="inputs-sizes">
+                            <input type="number" placeholder="Ширина" name="height">
+                            <input type="number" placeholder="Высота" name="width">
+                            <input type="number" placeholder="Поворот" name="rotation">
+                        </div>
+                        <p>Наложение эффектов</p>
+                        <div class="container">
+                            <label>
+                                <input type="radio" name="radio" checked="" name="One">
+                                <span>Размытие</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="radio" name="Two">
+                                <span>Чёрно-белый</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="radio" name="Three">
+                                <span>Трафарет</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="radio" name="Four">
+                                <span>Сглаживание</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="radio" name="Five">
+                                <span>Детализация</span>
+                            </label>
+                        </div>
+                        <button class="sub-but" type="submit">Изменить</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+{% endblock %}

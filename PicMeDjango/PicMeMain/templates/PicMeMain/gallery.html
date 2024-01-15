@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'PicMeMain/css/gal.css' %}">
+    <title>Pic me, Django!</title>
+</head>
+<body>
+        {% include 'menu.html' %}
+        <div class="gallery">
+            <h1>Галерея изображений</h1>
+            <div class="gallery-content">
+                {% for p in photo %}
+                <div class="card">
+                    <img src="{{ p.image.url }}" alt="">
+                    <div class="card-text">
+                        <p>{{ p.image.name }}</p>
+                        <a href='/convert/{{ p.id }}'>Редактировать</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        {% include 'footer.html' %}
+{% endblock %}
