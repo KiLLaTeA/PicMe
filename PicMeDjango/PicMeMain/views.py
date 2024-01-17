@@ -123,25 +123,57 @@ def convertPage(request, convert_id):
 
 
 def pageBadRequest(request, exception):
-    exc = {'codeNumber': '400', 'errorText': 'Ошибка', 'descText': 'Ошибка отправленного запроса.'}
+    exc = {
+        'menu': menu,
+        'footer': footer,
+        'logo': logo,
+        'codeNumber': '400',
+        'errorText': 'Ошибка',
+        'descText': 'Ошибка отправленного запроса.',
+    }
+
     return render(request, 'PicMeMain/exception.html', context=exc)
     # return HttpResponseBadRequest('<h1>Ошибка 400 - Ошибка запроса!</h1>')
 
 
 def pageForbidden(request, exception):
-    exc = {'codeNumber': '403', 'errorText': 'Ошибка', 'descText': 'Доступ запрещён!'}
+    exc = {
+        'menu': menu,
+        'footer': footer,
+        'logo': logo,
+        'codeNumber': '403',
+        'errorText': 'Ошибка',
+        'descText': 'Доступ запрещён!',
+    }
+
     return render(request, 'PicMeMain/exception.html', context=exc)
     # return HttpResponseForbidden('<h1>Ошибка 403 - Нету доступа!</h1>')
 
 
 def pageNotFound(request, exception):
-    exc = {'codeNumber': '404', 'errorText': 'Ошибка', 'descText': 'Данная страница не была найдена.'}
+    exc = {
+        'menu': menu,
+        'footer': footer,
+        'logo': logo,
+        'codeNumber': '404',
+        'errorText': 'Ошибка',
+        'descText': 'Данная страница не была найдена.',
+    }
+
     return render(request, 'PicMeMain/exception.html', context=exc)
     # return HttpResponseNotFound('<h1>Ошибка 404 - Не найдено!</h1>')
 
 
 def pageServerError(exception):
-    exc = {'codeNumber': '500', 'errorText': 'Ошибка', 'descText':'Ошибка на стороне сервера.'}
+    exc = {
+        'menu': menu,
+        'footer': footer,
+        'logo': logo,
+        'codeNumber': '500',
+        'errorText': 'Ошибка',
+        'descText': 'Ошибка на стороне сервера.'
+    }
+
     return render('PicMeMain/exception.html', context=exc)
     # return HttpResponseServerError('<h1>Ошибка 500 - Ошибка сервера!</h1>')
 
