@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'PicMeMain/css/selectedPhoto.css' %}">
+    <title>Pic me, Django!</title>
+</head>
+<body>
+        {% include 'menu.html' %}
+        <h1 class="titlePhoto">Ваше обработанное изображение</h1>
+        <div class="convertPhoto">
+            <div class="convertPhoto-form">
+                <div class="convertCard">
+                    <img src="{{ url_image }}" alt="">
+                    <div class="convertCard-text">
+                        <p>{{ name_image }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+{% endblock %}

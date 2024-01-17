@@ -21,9 +21,9 @@
                         {% csrf_token %}
                         <p>Изменение параметров фото</p>
                         <div class="inputs-sizes">
-                            <input type="number" placeholder="Ширина" name="height" value="10">
-                            <input type="number" placeholder="Высота" name="width" value="10">
-                            <input type="number" placeholder="Поворот" name="rotation" value="10">
+                            <input type="number" placeholder="Ширина" name="width" value="{{ img_orig_width }}">
+                            <input type="number" placeholder="Высота" name="height" value="{{ img_orig_height }}">
+                            <input type="number" placeholder="Поворот" name="rotation" value="0">
                         </div>
                         <p>Наложение эффектов</p>
                         <div class="container">

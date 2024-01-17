@@ -16,6 +16,13 @@
                 document.getElementById('file-name').innerText = "Выбран файл: " + fileName;
             }
         }
+        function changeUrl() {
+
+            window.history.pushState({}, "", "converted");
+        }
+        document.getElementById("changeUrlButton").addEventListener("click", changeUrl);
+        setTimeout(changeUrl, 1000);
+
     </script>
 </body>
 </html>

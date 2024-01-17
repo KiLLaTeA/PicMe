@@ -285,3 +285,81 @@ body{
     font-family: 'Cuprum';
     font-size: 28px;
 }
+
+.convertPhoto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.convertPhoto-form{
+    background-color: #548C8C;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    height: 400px;
+    border-radius: 25px;
+}
+
+.convertCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    margin: 15px 0 15px 15px;
+}
+
+.selectPhoto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectPhoto-form{
+    background-color: #548C8C;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    height: 400px;
+    border-radius: 25px;
+}
+
+.convertCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.convertCard img{
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 10px;
+    width: 96%;
+    height: 80%;
+}
+
+.convertCard-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.convertCard-text p{
+    font-size: 32px;
+    color: #505050;
+}
+
+.titlePhoto{
+    font-family: 'bachenas';
+    font-size: 64px;
+    margin: 10px 0;
+    text-align: center;
+}

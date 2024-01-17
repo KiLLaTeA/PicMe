@@ -75,38 +75,50 @@ def download_photo(request, photo_id):
 def convertPage(request, convert_id):
     # photo = Photo.objects.all()
     photo = Photo.objects.get(id=convert_id)
+    imge = Image.open(photo.image)
     data = {
         'menu': menu,
         'footer': footer,
         'logo': logo,
         'url_image': photo.image.url,
         'name_image': photo.image.name[6:],
+        'img_orig_width': imge.width,
+        'img_orig_height': imge.height,
     }
     if request.method == 'POST':
         dat_ass = request.POST
-        height = dat_ass.get('height')
-        width = dat_ass.get('width')
+        height_pic = dat_ass.get('height')
+        width_pic = dat_ass.get('width')
         rotation = dat_ass.get('rotation')
         check_box = dat_ass.get('radio')
 
-        imge = Image.open(photo.image)
+        imge_rotate = imge.rotate(angle=int(rotation))
 
-        imge.thumbnail((int(height),int(width)))
+        img_resized = imge_rotate.resize((int(width_pic), int(height_pic)))
 
         if check_box == "One":
-            convert_img = imge.filter(ImageFilter.BLUR)
-        if check_box == "Two":
-            convert_img = imge.convert('L')
-        if check_box == "Three":
-            convert_img = imge.filter(ImageFilter.CONTOUR)
-        if check_box == "Four":
-            convert_img = imge.filter(ImageFilter.SMOOTH)
-        if check_box == "Five":
-            convert_img = imge.filter(ImageFilter.DETAIL)
+            convert_img = img_resized.filter(ImageFilter.BLUR)
+        elif check_box == "Two":
+            convert_img = img_resized.convert('L')
+        elif check_box == "Three":
+            convert_img = img_resized.filter(ImageFilter.CONTOUR)
+        elif check_box == "Four":
+            convert_img = img_resized.filter(ImageFilter.SMOOTH)
+        else:
+            convert_img = img_resized.filter(ImageFilter.DETAIL)
         full_path = 'media/'+photo.image.name
 
-        imge.save(full_path)
         convert_img.save(full_path)
+
+        data_new = {
+            'menu': menu,
+            'footer': footer,
+            'logo': logo,
+            'url_image': photo.image.url,
+            'name_image': photo.image.name[6:],
+        }
+
+        return render(request, 'PicMeMain/convertedPhoto.html', context=data_new)
     return render(request, 'PicMeMain/selectedPhoto.html', context=data)
 
 
