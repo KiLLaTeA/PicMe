@@ -64,10 +64,8 @@ def upload_photo(request):
 def download_photo(request, photo_id):
     photo = Photo.objects.get(id=photo_id)
     image = Image.open(photo.image)
-    # black_white_image = image.convert('L')
     response = HttpResponse(content_type='image/jpeg')
     temp_filename = photo.image.name
-    # black_white_image.save(temp_filename)
     response['Content-Disposition'] = f'attachment; filename="{photo.image.name}"'
     return response
 
